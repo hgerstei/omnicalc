@@ -95,7 +95,12 @@ class CalculationsController < ApplicationController
 
     @range = @numbers.max - @numbers.min
 
-    @median = "Replace this string with your answer."
+    @median = 
+    if @numbers.length.odd?
+    @numbers.sort[(@numbers.length / 2)]
+  else
+    (@numbers.sort[@numbers.length / 2] + @numbers.sort[(@numbers.length / 2) - 1]) / 2
+  end
 
     @sum = @numbers.sum
 
