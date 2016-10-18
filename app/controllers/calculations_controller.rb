@@ -17,9 +17,8 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count
 
-    @occurrences = @text.split.each do |text|
-      @text.split.each == @special_word
-    end
+    @occurrences = @text.scan(@special_word).count
+
 
     # ================================================================================
     # Your code goes above.
@@ -111,16 +110,16 @@ class CalculationsController < ApplicationController
     #   - we square the difference
     #  - the variance is the mean of the squared differences
 
-    @variance = "Replace this string with your answer."
+    @variance = "answer needed"
 
     # STANDARD DEVIATION
     # ==================
     # To find the standard deviation of a set,
     #  - take the square root of the variance
 
-    @standard_deviation = "Replace this string with your answer."
+    #@standard_deviation = @variance ** 0.5
 
-    @mode = "Replace this string with your answer."
+    @mode = @numbers.uniq.max_by { |i| @numbers.count(i) }
 
     # ================================================================================
     # Your code goes above.
