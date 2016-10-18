@@ -39,7 +39,7 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-# P = (r * A) / (1 - (1+r) ^ (-N))
+    # P = (r * A) / (1 - (1+r) ^ (-N))
 
     @monthly_payment = ((@apr / 1200) * @principal) / (1 - (1 + (@apr / 1200)) ** (@years * -12))
 
@@ -95,12 +95,12 @@ class CalculationsController < ApplicationController
 
     @range = @numbers.max - @numbers.min
 
-    @median = 
+    @median =
     if @numbers.length.odd?
-    @numbers.sort[(@numbers.length / 2)]
-  else
-    (@numbers.sort[@numbers.length / 2] + @numbers.sort[(@numbers.length / 2) - 1]) / 2
-  end
+      @numbers.sort[(@numbers.length / 2)]
+    else
+      (@numbers.sort[@numbers.length / 2] + @numbers.sort[(@numbers.length / 2) - 1]) / 2
+    end
 
     @sum = @numbers.sum
 
@@ -115,14 +115,16 @@ class CalculationsController < ApplicationController
     #   - we square the difference
     #  - the variance is the mean of the squared differences
 
-    @variance = "answer needed"
+    x = @mean
+    sum = @numbers.inject(0){|accum, i| accum + (i - x) ** 2}
+    @variance = sum / @numbers.length.to_f
 
     # STANDARD DEVIATION
     # ==================
     # To find the standard deviation of a set,
     #  - take the square root of the variance
 
-    #@standard_deviation = @variance ** 0.5
+    @standard_deviation = ((sum / @numbers.length) ** (1 / 2)).to_f
 
     @mode = @numbers.uniq.max_by { |i| @numbers.count(i) }
 
