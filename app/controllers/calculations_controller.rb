@@ -17,7 +17,9 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count
 
-    @occurrences = @text.split.each == @special_word
+    @occurrences = @text.split.each do |text|
+      @text.split.each == @special_word
+    end
 
     # ================================================================================
     # Your code goes above.
@@ -100,7 +102,21 @@ class CalculationsController < ApplicationController
 
     @mean = @numbers.sum / @numbers.count
 
+    # VARIANCE
+    # ========
+    # To find the variance of a set,
+    #  - we find the mean of the set
+    #  - for each number in the set,
+    #   - we find the difference between the number and the mean
+    #   - we square the difference
+    #  - the variance is the mean of the squared differences
+
     @variance = "Replace this string with your answer."
+
+    # STANDARD DEVIATION
+    # ==================
+    # To find the standard deviation of a set,
+    #  - take the square root of the variance
 
     @standard_deviation = "Replace this string with your answer."
 
