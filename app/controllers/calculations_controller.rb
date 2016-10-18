@@ -68,7 +68,7 @@ class CalculationsController < ApplicationController
     @hours = (@ending - @starting) / (60 * 60)
     @days = (@ending - @starting) / (60 * 60 * 24)
     @weeks = (@ending - @starting) / (60 * 60 * 24 * 7)
-    @years = (@ending - @starting) / (60 * 60 * 24 * 7 * 52)
+    @years = (@ending - @starting) / (60 * 60 * 24 * 365.2422)
 
     # ================================================================================
     # Your code goes above.
@@ -124,7 +124,7 @@ class CalculationsController < ApplicationController
     # To find the standard deviation of a set,
     #  - take the square root of the variance
 
-    @standard_deviation = ((sum / @numbers.length) ** (1 / 2)).to_f
+    @standard_deviation = @variance.to_f ** 0.5
 
     @mode = @numbers.uniq.max_by { |i| @numbers.count(i) }
 
